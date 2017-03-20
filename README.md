@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Things to do next:
+    -Post User page after signup
+    -Make sure users are being added
+    
+    -Create Login page for users
+        -Ensure unique users can sign in
+        
+    -Add exercises to database
+        -Create table
+    -Add meals to database
+        -Create table
+    
+    -Finish information on home page
+    
+    -Re-edit README page for Chris's Consumption
