@@ -30,5 +30,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get user_tracking_path
     assert_response :success
   end
+  
+  
 
 end

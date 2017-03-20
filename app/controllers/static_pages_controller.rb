@@ -16,4 +16,7 @@ class StaticPagesController < ApplicationController
 
   def userTracking
   end
+  
+  def users_new
+  end
 end
