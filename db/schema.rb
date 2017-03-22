@@ -10,8 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322164129) do
 
+
+  
+ActiveRecord::Schema.define(version: 20170322163724) do
   create_table "foods", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
@@ -20,6 +22,16 @@ ActiveRecord::Schema.define(version: 20170322164129) do
     t.integer  "calories"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string   "name"
+    t.string   "category"
+    t.integer  "intensity_level"
+    t.integer  "time"
+    t.string   "link_to_exercise"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|
