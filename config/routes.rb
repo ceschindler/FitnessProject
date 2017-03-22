@@ -11,8 +11,11 @@ Rails.application.routes.draw do
 
   get 'user_tracking' => 'static_pages#userTracking'
 
-  get 'user_new' => 'users#new'
+  get 'new_user_path' => 'users#new'
+  
+  post 'new_user' => 'users#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static_pages#home"
+  resources :users
 end
