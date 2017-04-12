@@ -4,4 +4,19 @@ class ApplicationController < ActionController::Base
   def hello
       render html: "DC Fitness Institute"
   end
+  
+  def generate_workout
+  end
+
+  def display_workout
+  end
+
+  def generate_meal
+  end
+
+  def user_tracking
+  end
+  
+  def users_new
+  end
 end
