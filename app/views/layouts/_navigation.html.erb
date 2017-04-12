@@ -8,13 +8,11 @@
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <%# Don't hard code links use rails link helpers. This is what caused the error I saw. %>
       <li class="active">
-        <a href="/">Home</a>
+        <%= link_to "Home", root_path %>
       </li>
       <li>
         <a href="about">About</a>
-        <%# Here is an example of a link %>
         <%= link_to "About Helper", about_path %>
       </li>
       <li>
