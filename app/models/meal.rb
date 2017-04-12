@@ -1,3 +1,3 @@
 class Meal < ApplicationRecord
-    belongs_to :workout, has_many :foods
+    has_many :foods, through: :workouts
 end
