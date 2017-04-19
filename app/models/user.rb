@@ -28,6 +28,7 @@ class User < ApplicationRecord
   end
   
   def authenticated?(remember_token)
+    return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
   
@@ -36,7 +37,6 @@ class User < ApplicationRecord
   end
   
   private
-  
   
   def create_activation_digest
     self.activation_token = User.new_token
