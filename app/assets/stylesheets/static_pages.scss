@@ -6,3 +6,55 @@
 nav {
     padding-right: 10px;
 }
+
+body {
+    background: url(afpa-get-started.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+h1 {
+  font-size: 5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: left;
+  color: #ffffff;
+  width: 50%;
+}
+
+p {
+  font-size: 2em;
+  line-height: 1.7em;
+  color: #ffffff;
+  width: 50%;
+}
+
+#questions {
+    font-size: 1.5em;
+    line-height: 1.7em;
+    color: #ffffff;
+    width: 50%;
+    font-style: italic;
+}
+
+/* unvisited link */
+a.btn-primary:link {
+    color: #ffffff;
+}
+
+/* visited link */
+a.btn-primary:visited {
+    color: #b541f4;
+}
+
+/* mouse over link */
+a.btn-primary:hover {
+    color: #4286f4;
+}
+
+/* selected link */
+a.btn-primary:active {
+    color: #41f4e5;
+}

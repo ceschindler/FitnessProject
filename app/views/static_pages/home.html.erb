@@ -1,10 +1,15 @@
 <h1>DC Fitness Institute</h1>
-<p>Our site is made to populate random workouts. <%= link_to "Click Here", generate_workout_path %> 
+<p>Welcome to the DC Fitness Institute, join us and use our unique 
+  workout generator to help you become a more fit you! <%= link_to "Click Here", generate_workout_path, :class => "btn btn-primary" %> 
   to generate your first workout.</p>
-<p>In addition to populating random workouts (based on the user's input), our website will 
-  generate a meal that provides the ideal recovery for their selected workout. This will be 
-  a signed-in user option only.</p>
-<p>Also for signed-up users, they will get a profile page that tracks all of their workouts
-  and meal selections to provide data tracking that they can reference for the future. We would
-  also like to provide some analytics to this page where they can see some overall results on a
-  per week or per month basis.</p>
+  <ul id="questions">
+    <li>Are you tired of not being sure what workout you should do?</li>
+    <li>Not sure of what you should eat to pair with you're workout?</li>
+    <li>Would you like to have a simple way to track your workout?</li>
+  </ul>
+<p>Then you came to the right place, with our fitness tracker and meal pairing 
+   we take the stress out of getting fit.</p>
+<p>Fitness just got easier</p>
+<%#= link_to image_tag("home_hero_fitness.jpg", alt: "Uh oh background image is supposed to be showing here."),
+            'http://rubyonrails.org/' %>
+
