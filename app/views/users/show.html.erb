@@ -1,2 +1,4 @@
 <%= @user.name %>, <%= @user.email %><br />
-<%= link_to "Edit Profile", edit_user_path(current_user) %>
+<% if !current_user.nil? %>
+    <%= link_to "Edit Profile", edit_user_path(current_user) %>
+<% end %>
