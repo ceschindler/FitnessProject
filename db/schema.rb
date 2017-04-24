@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419151945) do
+ActiveRecord::Schema.define(version: 20170424161753) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "name"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170419151945) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "password_digest"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
     t.string   "activation_digest"
     t.boolean  "activated"
     t.datetime "activated_at"
