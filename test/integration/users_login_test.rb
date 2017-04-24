@@ -8,7 +8,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   
   test "login with remembering" do
     log_in_as(@user, remember_me: '1')
-    assert_equal @user, assigns(:user).current_user
+    assert_equal @user, assigns(:user).session(logged_in?)
   end
 
   test "login without remembering" do
