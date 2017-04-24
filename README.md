@@ -2,8 +2,6 @@
 
 New things to work on
 
--- Make link_to for the home "DC" logo with class "navbar-brand"
-
 -- Add data to database
   -- Food
   -- Exercises
