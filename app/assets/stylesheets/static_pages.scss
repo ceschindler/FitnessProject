@@ -58,3 +58,29 @@ a.btn-primary:hover {
 a.btn-primary:active {
     color: #41f4e5;
 }
+
+/* About Page Images */
+.aboutImg {
+    margin-bottom: 5em;
+    float: left;
+    clear: both;
+}
+
+/* About Page Paragraphs */
+.aboutParagraph {
+    float: left;
+    margin-top: -.5em;
+    
+}
+
+/* fonts */
+@font-face {
+  font-family: 'Helvetica';
+  src:url('helvetica.eot');
+  src:url('helvetica.eot?#iefix') format('embedded-opentype'),
+    url('helvetica.svg#helvetica') format('svg'),
+    url('helvetica.woff') format('woff'),
+    url('helvetica.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
