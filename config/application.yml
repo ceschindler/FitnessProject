@@ -1,0 +1,7 @@
+development:
+  smtp_server:
+  smtp_user:
+  smtp_password:
+  smtp_domain:
+  smtp_port:
+  smtp_authentication:
