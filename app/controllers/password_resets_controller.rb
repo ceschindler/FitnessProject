@@ -9,6 +9,24 @@ class PasswordResetsController < ApplicationController
   def edit
   end
   
+  def create
+    email = password_params.to_h[:email]  
+    @user = User.find_by(email: email.downcase)
+    puts '************************'
+    puts email
+    puts @user.inspect
+    if @user.inspect
+      @user.create_reset_digest
+      @user.send_password_reset_email
+      flash[:info] = "Email sent with password reset instructions"
+      redirect_to root_url
+    else
+      flash.now[:danger] = "Email address not found"
+      render 'new'
+    end
+  end
+
+  
   def update
     if params[:user][:password].empty?                  
       @user.errors.add(:password, "can't be empty")
@@ -27,6 +45,10 @@ class PasswordResetsController < ApplicationController
     
   def user_params
     params.require(:user).permit(:password, :password_confirmation)
+  end
+  
+  def password_params
+    params.require(:password_reset).permit(:email)
   end
   
   def get_user
