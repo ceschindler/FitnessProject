@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }
@@ -20,7 +20,16 @@ class User < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
-
+  end
+  
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+  
+  # Sets the password reset attributes.
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns(reset_digest:  User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
     
   def remember
@@ -37,14 +46,8 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
   
-  private
+ 
   
-  def create_activation_digest
-    self.activation_token = User.new_token
-    self.activation_digest = User.digest(activation_token)
-
-  end
-    
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
@@ -60,11 +63,10 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
   
-  private
+ private
   
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
-  
 end

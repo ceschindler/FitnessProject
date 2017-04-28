@@ -24,6 +24,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def reset_password
+    @user = User.find_by(email: params[:email])
+    if @user
+      UserMailer.password_reset(@user).deliver_now
+      flash.now[:success] = "Please check email for password reset link"
+      redirect_to root_url
+    else
+      flash.now[:danger] = "Can't find user with that email address"
+      render 'new'
+    end
+  end
+  
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
