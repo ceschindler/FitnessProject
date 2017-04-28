@@ -2,8 +2,6 @@
 
 New things to work on
 
--- FIX THE FLASH MESSAGES
-
 -- Add data to database
   -- Food
   -- Exercises

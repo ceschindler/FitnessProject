@@ -17,3 +17,4 @@ development:
   smtp_domain: 'smtp.mailtrap.io'
   smtp_port: '2525'
   smtp_authentication: :cram_md5
+  application_host: 'https://dc-fitness-institute-cschindler.c9users.io'
