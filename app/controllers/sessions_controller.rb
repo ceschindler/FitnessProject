@@ -4,6 +4,8 @@ class SessionsController < ApplicationController
   
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
+    puts @user.inspect
+    puts '$'*25
     if @user && @user.authenticate(params[:session][:password])
       if @user.activated?
         log_in @user
