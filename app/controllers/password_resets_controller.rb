@@ -12,9 +12,6 @@ class PasswordResetsController < ApplicationController
   def create
     email = password_params.to_h[:email]  
     @user = User.find_by(email: email.downcase)
-    puts '************************'
-    puts email
-    puts @user.inspect
     if @user.inspect
       @user.create_reset_digest
       @user.send_password_reset_email

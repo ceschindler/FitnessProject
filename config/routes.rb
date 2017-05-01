@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'sessions/new'
-
-  get 'static_pages/home'
-
   get 'about' => 'static_pages#about' 
 
   get 'generate_workout' => 'static_pages#generateWorkout'
