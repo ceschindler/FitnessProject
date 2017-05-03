@@ -26,7 +26,11 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+<<<<<<< HEAD
   config.action_mailer.default_url_options = { :host => ENV['application_host'] }
+=======
+  config.action_mailer.default_url_options = { :host => 'https://dc-fitness-institute-dwhobbs.c9users.io' }
+>>>>>>> 8708d48ae44fb7e1bdab527865db4237775c66e2
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
 
