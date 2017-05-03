@@ -12,10 +12,7 @@ class PasswordResetsController < ApplicationController
   def create
     email = password_params.to_h[:email]  
     @user = User.find_by(email: email.downcase)
-    puts '************************'
-    puts email
-    puts @user.inspect
-    if @user.inspect
+    if @user
       @user.create_reset_digest
       @user.send_password_reset_email
       flash[:info] = "Email sent with password reset instructions"
@@ -57,9 +54,14 @@ class PasswordResetsController < ApplicationController
 
   # Confirms a valid user.
   def valid_user
+    puts '**********************'
+    puts @user.inspect
+    puts @user.activated?
+    puts @user.authenticated?('reset', @user.id)
+    puts '**********************'
     unless (@user && @user.activated? &&
             @user.authenticated?(:reset, params[:id]))
-      redirect_to root_url
+      redirect_to login_path#root_url
     end
   end
   
