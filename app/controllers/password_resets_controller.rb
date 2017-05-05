@@ -61,7 +61,7 @@ class PasswordResetsController < ApplicationController
     puts '**********************'
     unless (@user && @user.activated? &&
             @user.authenticated?(:reset, params[:id]))
-      redirect_to login_path#root_url
+      redirect_to root_url
     end
   end
   
