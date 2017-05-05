@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get 'about' => 'static_pages#about' 
+  get '/about' => 'static_pages#about' 
 
-  get 'generate_workout' => 'static_pages#generateWorkout'
+  get '/generate_workout' => 'static_pages#generateWorkout'
 
-  get 'display_workout' => 'static_pages#displayWorkout'
+  get '/display_workout' => 'static_pages#displayWorkout'
 
-  get 'generate_meal' => 'static_pages#generateMeal'
+  get '/generate_meal' => 'static_pages#generateMeal'
 
-  get 'user_tracking' => 'static_pages#userTracking'
+  get '/user_tracking' => 'static_pages#userTracking'
   
   get '/login' => 'sessions#new'
   
