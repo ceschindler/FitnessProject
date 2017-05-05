@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
+  get '/about' => 'static_pages#about' 
 
-  get 'sessions/new'
+  get '/generate_workout' => 'static_pages#generateWorkout'
 
-  #get 'static_pages/home'
+  get '/display_workout' => 'static_pages#displayWorkout'
 
-  get 'about' => 'static_pages#about' 
+  get '/generate_meal' => 'static_pages#generateMeal'
 
-  get 'generate_workout' => 'static_pages#generateWorkout'
-
-  get 'display_workout' => 'static_pages#displayWorkout'
-
-  get 'generate_meal' => 'static_pages#generateMeal'
-
-  get 'user_tracking' => 'static_pages#userTracking'
+  get '/user_tracking' => 'static_pages#userTracking'
   
   get '/login' => 'sessions#new'
   
@@ -22,7 +17,6 @@ Rails.application.routes.draw do
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   resources :users
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
