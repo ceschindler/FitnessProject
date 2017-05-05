@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-    if @user.save && UserMailer.account_activation(@user).deliver_now
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
       flash[:info] = "Please check your email to activate your account"
       redirect_to root_url
     else
@@ -22,6 +23,18 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+  end
+  
+  def reset_password
+    @user = User.find_by(email: params[:email])
+    if @user
+      UserMailer.password_reset(@user).deliver_now
+      flash.now[:info] = "Please check email for password reset link"
+      redirect_to root_url
+    else
+      flash.now[:danger] = "Can't find user with that email address"
+      render 'new'
+    end
   end
   
   def update
