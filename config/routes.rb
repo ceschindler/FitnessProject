@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
   get '/about' => 'static_pages#about' 
 
   get '/generate_workout' => 'static_pages#generateWorkout'
->>>>>>> acount_activation
 
   get '/display_workout' => 'static_pages#displayWorkout'
 
