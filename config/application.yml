@@ -11,10 +11,10 @@
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
 development:
-  smtp_user_name: 'ddcb326dd6c4fa'
-  smtp_password: 'e200ae9ed56347'
+  smtp_user_name: '781853af8c8829'
+  smtp_password: 'de03ee453717b1'
   smtp_server: 'smtp.mailtrap.io'
   smtp_domain: 'smtp.mailtrap.io'
   smtp_port: '2525'
   smtp_authentication: :cram_md5
-  application_host: 'https://dc-fitness-institute-cschindler.c9users.io'
+  application_host: 'https://dc-fitness-institute-dwhobbs.c9users.io'

@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   get '/display_workout' => 'static_pages#displayWorkout'
 
-  get '/generate_meal' => 'static_pages#generateMeal'
-
   get '/user_tracking' => 'static_pages#userTracking'
   
   get '/login' => 'sessions#new'
