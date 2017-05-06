@@ -12,7 +12,7 @@ class PasswordResetsController < ApplicationController
   def create
     email = password_params.to_h[:email]  
     @user = User.find_by(email: email.downcase)
-    if @user.inspect
+    if @user
       @user.create_reset_digest
       @user.send_password_reset_email
       flash[:info] = "Email sent with password reset instructions"
