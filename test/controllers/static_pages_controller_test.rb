@@ -21,11 +21,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get generateMeal" do
-    get generate_meal_path
-    assert_response :success
-  end
-
   test "should get userTracking" do
     get user_tracking_path
     assert_response :success
