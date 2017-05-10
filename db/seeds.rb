@@ -17,8 +17,36 @@
 #               activated_at: Time.zone.now)
 # end
 
-10.times do |n|
-    name = Faker::exercise.name
-    Exercise.create!(name: name)
-    puts 'Exercise is happening'
+weight = ["Dumbell-Flys", "Cable-Flys", "BenchPress", "Curls", "Squats", "Decline-Bench", "Incline-Bench", "Hammer-curls", "Leg-Press"]
+
+for i in weight
+
+    Exercise.create!(name: i,
+                     category: "WeightLifting",
+                     intensity_level: 1 + rand(2),
+                     time: 3 + rand(5),
+                     link_to_exercise: "https://www.youtube.com/user/MDUSAweightlifting")
 end
+
+cardio = ["Running", "Jumping-Jacks", "Sprints", "Hill-Sprints", "Burpees"]
+
+for i in cardio
+
+    Exercise.create!(name: i,
+                     category: "Cardio",
+                     intensity_level: 1 + rand(2),
+                     time: 20 + rand(10),
+                     link_to_exercise: "https://www.youtube.com/watch?v=NKtDEgKKtwc")
+end
+
+yoga = ["Cat", "Down-Dog", "Rag-Doll", "Tree", "BackBend", "Balancing-Stick", "Lotus", "Sage-Pose", "Bow"]
+
+for i in yoga
+
+    Exercise.create!(name: i,
+                     category: "Yoga",
+                     intensity_level: 1 + rand(2),
+                     time: 20 + rand(10),
+                     link_to_exercise: "https://www.youtube.com/channel/UCFKE7WVJfvaHW5q283SxchA")
+end
+
