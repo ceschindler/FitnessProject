@@ -1,18 +1,24 @@
-User.create!(name:  "Example User",
-             email: "exampl@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             activated: true,
-             activated_at: Time.zone.now)
+# User.create!(name:  "Example User",
+#              email: "exampl@railstutorial.org",
+#              password:              "foobar",
+#              password_confirmation: "foobar",
+#              activated: true,
+#              activated_at: Time.zone.now)
 
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!(name:  name,
-              email: email,
-              password:              password,
-              password_confirmation: password,
-              activated: true,
-              activated_at: Time.zone.now)
+# 99.times do |n|
+#   name  = Faker::Name.name
+#   email = "example-#{n+1}@railstutorial.org"
+#   password = "password"
+#   User.create!(name:  name,
+#               email: email,
+#               password:              password,
+#               password_confirmation: password,
+#               activated: true,
+#               activated_at: Time.zone.now)
+# end
+
+10.times do |n|
+    name = Faker::exercise.name
+    Exercise.create!(name: name)
+    puts 'Exercise is happening'
 end

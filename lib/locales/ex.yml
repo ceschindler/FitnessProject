@@ -1,0 +1,6 @@
+ex:
+    faker:
+        name:
+            exercise_name: ["flys", "curls", "incline-bench", "decline-bench", "benchpress"]
+            
+            
