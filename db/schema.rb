@@ -38,11 +38,13 @@ ActiveRecord::Schema.define(version: 20170424161753) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.integer  "workout_id"
     t.integer  "user_id"
     t.integer  "exercise_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "category"
+    t.integer  "intensity_level"
+    t.integer  "time"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

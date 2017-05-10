@@ -1,2 +1,9 @@
-<h1>StaticPages#generateWorkout</h1>
-<p>Find me in app/views/static_pages/generateWorkout.html.erb</p>
+<h1> Workout Generator </h1>
+
+<p>Choose your workout specifications here:</p>
+
+<% form_for @workout do |w| %>
+  <%= w.text_field :name %>
+  <%= w.select :category, [['WeightLifting','WeightLifting'],['Cardio','Cardio'],['Yoga','Yoga']] %>
+  <%= w.submit %>
+<% end %>

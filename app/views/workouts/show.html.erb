@@ -1,0 +1,13 @@
+<% require 'sqlite3' %>
+<p>You chose:</p>
+
+<% db = SQLite3::Database.open( "db/development.sqlite3" ) %>
+
+<% db.execute( "SELECT * FROM workouts WHERE id = #{params[:id]}" ) do |row| %>
+  <h4>Category: <%= row[3] %></h4>
+  <h4>Intensity: <%= row[4] %></h4>
+  <h4>Time: <%= row[5] %></h4>
+<% end %>
+
+
+
