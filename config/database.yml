@@ -22,5 +22,4 @@ test:
 
 production:
   <<: *default
-  host: localhost
   database: db/production
