@@ -6,7 +6,6 @@
 #
 default: &default
   adapter: postgresql
-  host: 'dc-fitness-institute-cschindler.c9users.io'
   pool: 5
   timeout: 5000
 
@@ -23,4 +22,5 @@ test:
 
 production:
   <<: *default
+  host: 'stark-mountain-93258.herokuapp.com'
   database: db/production.sqlite3
