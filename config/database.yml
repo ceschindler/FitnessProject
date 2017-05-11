@@ -23,4 +23,4 @@ test:
 production:
   <<: *default
   host: 'stark-mountain-93258.herokuapp.com'
-  database: db/production.sqlite3
+  database: db/production
