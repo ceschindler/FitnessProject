@@ -5,10 +5,10 @@ class AccountActivationsController < ApplicationController
       user.update_attribute(:activated, true)
       user.update_attribute(:activated_at, Time.zone.now)
       log_in user
-      flash[:success] = "Account activated! Welcome to DC Finess Institute! Get ready to work!"
+      flash[:success] = 'Account activated! Welcome to DC Finess Institute! Get ready to work!'
       redirect_to user
     else
-      flash[:danger] = "Invalid activation link"
+      flash[:danger] = 'Invalid activation link'
       redirect_to root_url
     end
   end
