@@ -22,5 +22,5 @@ test:
 
 production:
   <<: *default
-  host: 'stark-mountain-93258.herokuapp.com'
+  host: localhost
   database: db/production
