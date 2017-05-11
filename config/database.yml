@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: postgresql
-  host: localhost
+  host: 'dc-fitness-institute-cschindler.c9users.io'
   pool: 5
   timeout: 5000
 
