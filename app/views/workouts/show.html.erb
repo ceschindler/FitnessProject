@@ -24,4 +24,14 @@
       <%= row %>
     <% end %>
   <% end %>
+  
+  <%= link_to 'Re-Generate', new_workout_path, class: "btn btn-primary" %>
+  <% if logged_in? %>
+    <%= form_for(@workout, url: workout_path(params[:id])) do |w| %>
+      <%= hidden_field_tag :id, @workout.id %>
+      <% puts @workout.id %>
+      <%= w.submit 'Save Workout', id: 'slide', class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
 </div>
+

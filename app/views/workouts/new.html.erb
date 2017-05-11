@@ -1,0 +1,17 @@
+<h1>Generate Workout</h1>
+
+<p>Choose your workout specifications here:</p>
+<div class="background">
+  <%= form_for(@workout) do |w| %>
+  <%= w.label :category %>
+  <%= w.select :category, [['WeightLifting','WeightLifting'],['Cardio','Cardio'],['Yoga','Yoga']] %>
+  
+  <%= w.label :intensity_level%>
+  <%= w.select :intensity_level, [['Low', 1], ['Medium', 2], ['High', 3]] %>
+  
+  <%= w.label :time %>
+  <%= w.text_field :time %>
+  
+  <%= w.submit 'Generate', class: "btn btn-primary btn-xs" %>
+<% end %>
+</div>

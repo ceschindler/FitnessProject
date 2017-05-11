@@ -6,12 +6,10 @@ class ApplicationController < ActionController::Base
   end
   
   def generate_workout
+    render html: 'Hello'
   end
 
   def display_workout
-  end
-
-  def generate_meal
   end
 
   def user_tracking
