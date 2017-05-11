@@ -22,4 +22,5 @@ test:
 
 production:
   <<: *default
+  host: 'dc-fitness-institute-cschindler.c9users.io'
   database: db/production
