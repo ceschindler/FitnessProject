@@ -25,7 +25,7 @@
         <h4 class="workout"><%= "Exercise: " + row[0] %></h4>
         <h5 class="workout"><%= "Minutes: " + row[2].to_s %></h5>
         <h5 class="workout"><%= "How to do this Exercise: " %> 
-                            <%= link_to "#{row[3]}", "#{row[3]}", class: "links" %></h5>
+                            <%= link_to "#{row[3]}", "#{row[3]}", class: "links", target: '_blank' %></h5>
       </div>
     <% end %>
   <% end %>
