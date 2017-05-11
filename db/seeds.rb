@@ -1,9 +1,9 @@
-# User.create!(name:  "Example User",
-#             email: "exampl@railstutorial.org",
-#             password:              "foobar",
-#             password_confirmation: "foobar",
-#             activated: true,
-#             activated_at: Time.zone.now)
+User.create!(name:  "Example User",
+            email: "exampl@railstutorial.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            activated: true,
+            activated_at: Time.zone.now)
 
 # 99.times do |n|
 #   name  = Faker::Name.name
@@ -23,7 +23,7 @@ for i in weight
 
   Exercise.create!(name: i,
                   category: "WeightLifting",
-                  intensity_level: 1 + rand(2),
+                  intensity_level: 1 + rand(3),
                   time: 3 + rand(5),
                   link_to_exercise: "https://www.youtube.com/user/MDUSAweightlifting")
 end
@@ -34,7 +34,7 @@ for i in cardio
 
   Exercise.create!(name: i,
                   category: "Cardio",
-                  intensity_level: 1 + rand(2),
+                  intensity_level: 1 + rand(3),
                   time: 20 + rand(10),
                   link_to_exercise: "https://www.youtube.com/watch?v=NKtDEgKKtwc")
 end
@@ -45,8 +45,8 @@ for i in yoga
 
   Exercise.create!(name: i,
                   category: "Yoga",
-                  intensity_level: 1 + rand(2),
-                  time: 20 + rand(10),
+                  intensity_level: 1 + rand(3),
+                  time: 2 + rand(5),
                   link_to_exercise: "https://www.youtube.com/channel/UCFKE7WVJfvaHW5q283SxchA")
 end
 

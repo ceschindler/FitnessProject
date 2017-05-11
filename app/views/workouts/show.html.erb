@@ -1,18 +1,37 @@
 <% require 'sqlite3' %>
-<p>You chose:</p>
-<% remaining = 0 %>
-<% db = SQLite3::Database.open( "db/development.sqlite3" ) %>
+<div class="background">
+  <p>You chose:</p>
+  <% remaining = 0 %>
+  <% db = SQLite3::Database.open( "db/development.sqlite3" ) %>
+  
+  <% db.execute( "SELECT * FROM workouts WHERE id = #{params[:id]}" ) do |row| %>
+    <h4 class="workout">Category: <%= row[3] %></h4>
+    <h4 class="workout">Intensity: <%= row[4] %></h4>
+    <h4 class="workout">Time: <%= row[5] %></h4>
+    <%= remaining = row[5].to_i %>
+  <% end %>
+  
+  <% db.execute( "SELECT name, intensity_level, time FROM exercises 
+                  WHERE category = (SELECT category FROM workouts 
+                                    WHERE id = #{params[:id]}) 
+                  AND intensity_level = (SELECT intensity_level FROM workouts
+                                         WHERE id = #{params[:id]})" ) do |row| %>
+     
+    <% if remaining - row[2] < 0 %>
+      <p>less than zero</p>
+    <% else %>
+      <% remaining = remaining - row[2] %>
+      <%= row %>
+    <% end %>
+  <% end %>
+  
+  <%= link_to 'Re-Generate', new_workout_path, class: "btn btn-primary" %>
+  <% if logged_in? %>
+    <%= form_for(@workout, url: workout_path(params[:id])) do |w| %>
+      <%= hidden_field_tag :id, @workout.id %>
+      <% puts @workout.id %>
+      <%= w.submit 'Save Workout', id: 'slide', class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>
 
-<% db.execute( "SELECT * FROM workouts WHERE id = #{params[:id]}" ) do |row| %>
-  <h4>Category: <%= row[3] %></h4>
-  <h4>Intensity: <%= row[4] %></h4>
-  <h4>Time: <%= row[5] %></h4>
-  <%= remaining = row[5].to_i %>
-<% end %>
-
-<% db.execute( "SELECT name, intensity_level, time FROM exercises 
-                WHERE exercises.category = (SELECT category FROM workouts 
-                                           WHERE id = #{params[:id]})" ) do |row| %>
-  <%= remaining - row[2] %> 
-  <% break if remaining <= 0 %>
-<% end %>

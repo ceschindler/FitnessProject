@@ -1,2 +1,27 @@
-<h1>StaticPages#displayWorkout</h1>
-<p>Find me in app/views/static_pages/displayWorkout.html.erb</p>
+<% require 'sqlite3' %>
+<div class="background">
+  <p>You chose:</p>
+  <% remaining = 0 %>
+  <% db = SQLite3::Database.open( "db/development.sqlite3" ) %>
+  
+  <% db.execute( "SELECT * FROM workouts WHERE id = #{params[:id]}" ) do |row| %>
+    <h4 class="workout">Category: <%= row[3] %></h4>
+    <h4 class="workout">Intensity: <%= row[4] %></h4>
+    <h4 class="workout">Time: <%= row[5] %></h4>
+    <%= remaining = row[5].to_i %>
+  <% end %>
+  
+  <% db.execute( "SELECT name, intensity_level, time FROM exercises 
+                  WHERE category = (SELECT category FROM workouts 
+                                    WHERE id = #{params[:id]}) 
+                  AND intensity_level = (SELECT intensity_level FROM workouts
+                                         WHERE id = #{params[:id]})" ) do |row| %>
+     
+    <% if remaining - row[2] < 0 %>
+      <p>less than zero</p>
+    <% else %>
+      <% remaining = remaining - row[2] %>
+      <%= row %>
+    <% end %>
+  <% end %>
+</div>
