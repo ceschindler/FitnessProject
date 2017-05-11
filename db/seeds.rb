@@ -5,7 +5,7 @@ User.create!(name:  "Example User",
             activated: true,
             activated_at: Time.zone.now)
 
-99.times do |n|
+10.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = 'password'
@@ -25,7 +25,14 @@ weight = ['Dumbell-Flys',
           'Decline-Bench',
           'Incline-Bench',
           'Hammer-curls',
-          'Leg-Press']
+          'Leg-Press',
+          'Weighted Dips',
+          'Weighted Pull-ups',
+          'Leg-Extension',
+          'Tricep-Extension',
+          'Shoulder-press',
+          'Upright-rows',
+          'Shoulder-shrug']
 
 for i in weight
 
@@ -40,26 +47,50 @@ cardio = ['Running',
           'Jumping-Jacks',
           'Sprints',
           'Hill-Sprints',
-          'Burpees']
+          'Burpees',
+          'Mountain-Climbers',
+          'Elliptical',
+          'Plyometrics',
+          'Push-ups',
+          'Bear-crawl',
+          'Crab-walk',
+          'Inchworm',
+          'Plank-jacks',
+          'Skaters',
+          'Jump-rope',
+          'Squat-jump',
+          'Donkey-kick']
 
 for i in cardio
 
   Exercise.create!(name: i,
                    category: "Cardio",
                    intensity_level: 1 + rand(3),
-                   time: 20 + rand(10),
+                   time: 15 + rand(10),
                    link_to_exercise: "https://www.youtube.com/watch?v=NKtDEgKKtwc")
 end
 
 yoga = ['Cat',
-        'Down-Dog',
+        'Downward-Dog',
         'Rag-Doll',
         'Tree',
         'BackBend',
         'Balancing-Stick',
         'Lotus',
         'Sage-Pose',
-        'Bow']
+        'Bow',
+        'Crane',
+        'Chaturanga',
+        'Boat',
+        'Chair',
+        'Half-moon',
+        'Reclining-hero',
+        'Scale',
+        'Wheel',
+        'Bridge',
+        'Warrior-I',
+        'Warrior-II',
+        'Warrior-III']
 
 for i in yoga
 
