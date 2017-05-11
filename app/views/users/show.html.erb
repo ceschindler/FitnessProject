@@ -1,4 +1,4 @@
-<h2 class="workout">Welcome back, <%= @user.name %></h2><br />
+<h2 class="workout"><%= @user.name %>'s Profile</h2><br />
 <% if current_user == @user %>
     <%= link_to "Edit Profile", edit_user_path(current_user), class: 'btn btn-primary' %>
     
@@ -6,71 +6,74 @@
 
 <p>Workout Log</p>
 <br />
-<% db = SQLite3::Database.open( "db/development.sqlite3" ) %>
-<table>
-  <tr>
-    <th class="workoutTable tableHeader">Category</th>
-    <th class="workoutTable tableHeader">Intensity</th>
-    <th class="workoutTable tableHeader">Time</th>
-  </tr>
-  <% db.execute( "SELECT * FROM workouts 
-                  WHERE user_id = #{params[:id]}
-                  ORDER BY created_at DESC LIMIT 10" ) do |row| %>
+<% if !Workout.find_by(user_id: params[:id]).nil? %>
+  <% db = SQLite3::Database.open( "db/development.sqlite3" ) %>
+  <table>
     <tr>
-      <td class="workoutTable"><%= row[3] %></td>
-      <td class="workoutTable"><%= row[4] %></td>
-      <td class="workoutTable"><%= row[5] %></td>
+      <th class="workoutTable tableHeader">Category</th>
+      <th class="workoutTable tableHeader">Intensity</th>
+      <th class="workoutTable tableHeader">Time</th>
     </tr>
-  <% end %>
-  
-  
-  <tr>
-    <td></td>
-    <td class="workoutTable center">Summary Data</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td class="workoutTable summary">
-      <% db.execute( "SELECT category, count(category) FROM workouts 
-                      WHERE user_id = #{params[:id]} 
-                      GROUP BY category
-                      ORDER BY count(category) DESC LIMIT 1" ) do |row| %>
-      <%= "Favorite Category: " + row[0] %>
-      <% end %>
-    </td>
-    <td class="workoutTable summary">
-      <% db.execute( "SELECT sum(intensity_level), count(intensity_level) FROM workouts 
-                      WHERE user_id = #{params[:id]}" ) do |row| %>
-      <%= "Average Intensity: " + '%.2f' % (row[0].to_f / row[1].to_f).to_s %>
-      <% end %>
-    </td>
-    <td class="workoutTable summary">
-      <% db.execute( "SELECT sum(time), count(time) FROM workouts 
-                      WHERE user_id = #{params[:id]}") do |row| %>
-      <%= "Average Time: " + (row[0] / row[1]).to_s + " Min(s)" %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <% d = DateTime.now %>
-    <td class="workoutTable summary">
-      <% db.execute( "SELECT count(created_at) FROM workouts 
-                      WHERE user_id = #{params[:id]} AND created_at LIKE '%#{d.strftime("%m")}%'") do |row| %>
-      <%= "Workouts this month: " + row[0].to_s %>
-      <% end %>
-    </td>
-    <td class="workoutTable summary">
-      <% db.execute( "SELECT strftime('%d','now'), count(created_at) FROM workouts 
-                      WHERE user_id = #{params[:id]}") do |row| %>
-      <%= "Percentage of Days: " + '%.1f' % ((row[1].to_f / row[0].to_f) * 100).to_s + '%' %>
-      <% end %>
-    </td>
-    <td class="workoutTable summary">
-      <% db.execute( "SELECT strftime('%d','now'), count(created_at) FROM workouts 
-                      WHERE user_id = #{params[:id]}") do |row| %>
-      <%= "Workouts needed for 100%: " + (row[0].to_i - row[1]).to_s %>
-      <% end %>
-    </td>
-  </tr>
-</table>  
-
+    <% db.execute( "SELECT * FROM workouts 
+                    WHERE user_id = #{params[:id]}
+                    ORDER BY created_at DESC LIMIT 10" ) do |row| %>
+      <tr>
+        <td class="workoutTable"><%= row[3] %></td>
+        <td class="workoutTable"><%= row[4] %></td>
+        <td class="workoutTable"><%= row[5] %></td>
+      </tr>
+    <% end %>
+    
+    
+    <tr>
+      <td></td>
+      <td class="workoutTable center">Summary Data</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="workoutTable summary">
+        <% db.execute( "SELECT category, count(category) FROM workouts 
+                        WHERE user_id = #{params[:id]} 
+                        GROUP BY category
+                        ORDER BY count(category) DESC LIMIT 1" ) do |row| %>
+        <%= "Favorite Category: " + row[0] %>
+        <% end %>
+      </td>
+      <td class="workoutTable summary">
+        <% db.execute( "SELECT sum(intensity_level), count(intensity_level) FROM workouts 
+                        WHERE user_id = #{params[:id]}" ) do |row| %>
+        <%= "Average Intensity: " + '%.2f' % (row[0].to_f / row[1].to_f).to_s %>
+        <% end %>
+      </td>
+      <td class="workoutTable summary">
+        <% db.execute( "SELECT sum(time), count(time) FROM workouts 
+                        WHERE user_id = #{params[:id]}") do |row| %>
+        <%= "Average Time: " + (row[0] / row[1]).to_s + " Min(s)" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <% d = DateTime.now %>
+      <td class="workoutTable summary">
+        <% db.execute( "SELECT count(created_at) FROM workouts 
+                        WHERE user_id = #{params[:id]} AND created_at LIKE '%#{d.strftime("%m")}%'") do |row| %>
+        <%= "Workouts this month: " + row[0].to_s %>
+        <% end %>
+      </td>
+      <td class="workoutTable summary">
+        <% db.execute( "SELECT strftime('%d','now'), count(created_at) FROM workouts 
+                        WHERE user_id = #{params[:id]}") do |row| %>
+        <%= "Percentage of Days: " + '%.1f' % ((row[1].to_f / row[0].to_f) * 100).to_s + '%' %>
+        <% end %>
+      </td>
+      <td class="workoutTable summary">
+        <% db.execute( "SELECT strftime('%d','now'), count(created_at) FROM workouts 
+                        WHERE user_id = #{params[:id]}") do |row| %>
+        <%= "Workouts needed for 100%: " + (row[0].to_i - row[1]).to_s %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <p>You must <%= link_to "Generate", new_workout_path, class: 'btn btn-primary' %> a workout in order to see your workout log.</p>
+<% end %>
