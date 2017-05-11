@@ -1,21 +1,21 @@
 User.create!(name:  "Example User",
-             email: "exampl@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             activated: true,
-             activated_at: Time.zone.now)
+            email: "exampl@railstutorial.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            activated: true,
+            activated_at: Time.zone.now)
 
-# 99.times do |n|
-#   name  = Faker::Name.name
-#   email = "example-#{n+1}@railstutorial.org"
-#   password = 'password'
-#   User.create!( name:  name,
-#                 email: email,
-#                 password:              password,
-#                 password_confirmation: password,
-#                 activated: true,
-#                 activated_at: Time.zone.now)
-# end
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = 'password'
+  User.create!( name:  name,
+                email: email,
+                password:              password,
+                password_confirmation: password,
+                activated: true,
+                activated_at: Time.zone.now)
+end
 
 weight = ['Dumbell-Flys',
           'Cable-Flys',
@@ -27,7 +27,7 @@ weight = ['Dumbell-Flys',
           'Hammer-curls',
           'Leg-Press']
 
-weight.each { |i| }
+for i in weight
 
   Exercise.create!(name: i,
                    category: "WeightLifting",
@@ -42,7 +42,7 @@ cardio = ['Running',
           'Hill-Sprints',
           'Burpees']
 
-cardio.each { |i| }
+for i in cardio
 
   Exercise.create!(name: i,
                    category: "Cardio",
@@ -61,7 +61,7 @@ yoga = ['Cat',
         'Sage-Pose',
         'Bow']
 
-yoga.each { |i| }
+for i in yoga
 
   Exercise.create!(name: i,
                    category: "Yoga",

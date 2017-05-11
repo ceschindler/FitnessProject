@@ -27,6 +27,24 @@ label {
   color: white;
 }
 
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: pink;
+}
+
 #slide {
   margin: 5px;
+}
+
+.exercise {
+  border: 1px solid white;
+  padding: 4px;
+  margin-top: 6px;
 }

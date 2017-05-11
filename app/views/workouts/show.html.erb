@@ -1,6 +1,6 @@
 <% require 'sqlite3' %>
 <div class="background">
-  <p>You chose:</p>
+  <h2 class="workout">You chose:<h2>
   <% remaining = 0 %>
   <% db = SQLite3::Database.open( "db/development.sqlite3" ) %>
   
@@ -8,24 +8,29 @@
     <h4 class="workout">Category: <%= row[3] %></h4>
     <h4 class="workout">Intensity: <%= row[4] %></h4>
     <h4 class="workout">Time: <%= row[5] %></h4>
-    <%= remaining = row[5].to_i %>
+    <% remaining = row[5].to_i %>
   <% end %>
   
-  <% db.execute( "SELECT name, intensity_level, time FROM exercises 
+  <% db.execute( "SELECT name, intensity_level, time, link_to_exercise
+                  FROM exercises 
                   WHERE category = (SELECT category FROM workouts 
                                     WHERE id = #{params[:id]}) 
                   AND intensity_level = (SELECT intensity_level FROM workouts
                                          WHERE id = #{params[:id]})" ) do |row| %>
      
     <% if remaining - row[2] < 0 %>
-      <p>less than zero</p>
     <% else %>
       <% remaining = remaining - row[2] %>
-      <%= row %>
+      <div class="exercise">
+        <h4 class="workout"><%= "Exercise: " + row[0] %></h4>
+        <h5 class="workout"><%= "Minutes: " + row[2].to_s %></h5>
+        <h5 class="workout"><%= "How to do this Exercise: " %> 
+                            <%= link_to "#{row[3]}", "#{row[3]}", class: "links" %></h5>
+      </div>
     <% end %>
   <% end %>
   
-  <%= link_to 'Re-Generate', new_workout_path, class: "btn btn-primary" %>
+  <%= link_to 'Re-Generate', new_workout_path, id: 'slide', class: "btn btn-primary" %>
   <% if logged_in? %>
     <%= form_for(@workout, url: workout_path(params[:id])) do |w| %>
       <%= hidden_field_tag :id, @workout.id %>
