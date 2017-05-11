@@ -12,12 +12,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get generateWorkout" do
-    get generate_workout_path
-    assert_response :success
-  end
-
-  test "should get displayWorkout" do
-    get display_workout_path
+    get new_workout_path
     assert_response :success
   end
 
